@@ -19,33 +19,31 @@ interface  UserDetail {
         };
     }
 }
-const UserDetails : React.FC =  () =>{
-    const id=1;
-    const [user , setUser] = useState<UserDetail | null>(null);
-    const [loading , setLoading] = useState<boolean>(true)
+const UserDetails : React.FC =  () => {
+    const id = 1;
+    const [user, setUser] = useState<UserDetail | null>(null);
+    const [loading, setLoading] = useState<boolean>(true)
 
-    useEffect(() =>{
-       const fetchUserDetails = async () =>{
-           try{
-               const response = await fetch(`https://fakestoreapi.com/users/${id}`);
-               const responseData =  await response.json();
-               setUser(responseData);
-               setLoading(false)
+    useEffect(() => {
+        const fetchUserDetails = async () => {
+            try {
+                const response = await fetch(`https://fakestoreapi.com/users/${id}`);
+                const responseData = await response.json();
+                setUser(responseData);
+                setLoading(false)
 
-           }
-           catch (error){
-                console.error("Error fetch user info" ,error);
+            } catch (error) {
+                console.error("Error fetch user info", error);
 
-           }
-       }
-       fetchUserDetails();
-    },[id])
-    return  (
-        <div className="container mx-auto">
-            {loading &&
-                <div className="text-center">Loading ...</div>
             }
-            {user &&
+        }
+        fetchUserDetails();
+    }, [id])
+    return (
+        <div className="container mx-auto">
+            {loading ? (
+                <div className="text-center">Loading...</div>
+            ) : user ? (
                 <div className="mt-40 md:mt-0 bg-white shadow-md p-8 max-w-2xl mx-auto text-left">
                     <h1 className="font-bold text-center mb-8">User Details</h1>
                     <div className="mb-4">
@@ -74,8 +72,9 @@ const UserDetails : React.FC =  () =>{
                         </p>
                     </div>
                 </div>
-            }
-            {!user && <div className="text-center text-red-500">User not found</div>}
+            ) : (
+                <div className="text-center text-red-500">User not found</div>
+            )}
         </div>
 
     )
