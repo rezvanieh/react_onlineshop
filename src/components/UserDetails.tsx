@@ -44,7 +44,7 @@ const UserDetails : React.FC =  () => {
             {loading ? (
                 <div className="text-center">Loading...</div>
             ) : user ? (
-                <div className="mt-40 md:mt-0 bg-white shadow-md p-8 max-w-2xl mx-auto text-left">
+                <div className="mt-40 md:mt-20 bg-white shadow-md p-8 max-w-2xl mx-auto text-left">
                     <h1 className="font-bold text-center mb-8">User Details</h1>
                     <div className="mb-4">
                         <strong className="text-gray-700">First Name:</strong>{" "}
