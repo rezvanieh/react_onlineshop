@@ -4,13 +4,15 @@ import './App.css';
 import {createBrowserRouter, RouterProvider} from "react-router-dom";
 import UserDetails from "./components/UserDetails";
 import RootLayout from "./Root";
+import ProductsList from "./components/Products/ProductsList";
 
 const router = createBrowserRouter([
   {
       path : "/" ,
       element : <RootLayout />,
       children :[
-      {path : "/users/1" ,element: <UserDetails />}
+          {path : "/" ,element : <ProductsList />},
+          {path : "/users/1" ,element: <UserDetails />}
     ]}
 
 ])
